@@ -26,4 +26,6 @@ dependencies {
 
     // Use JUnit test framework
     testImplementation 'junit:junit:4.12'
+    
+    compile group: 'net.dv8tion', name: 'JDA', version: '4.0.0_45'
 }
