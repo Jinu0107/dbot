@@ -7,7 +7,7 @@ import net.dv8tion.jda.api.JDABuilder;
 public class MainApp {
 	public static void main(String[] args) {
 		JDABuilder builder = new JDABuilder(AccountType.BOT);
-		String token = "NjI2NjA5NjQ5NDIwMDc1MDQx.XYwq-A.6GgoOvCNfkX9w4WiS8KXz2srckY";
+		String token = "NjI2NjA5NjQ5NDIwMDc1MDQx.XYyWcA.wyTui5wgXszVGTJ_FV9F2ggKE78";
 		builder.setToken(token);
 
 		try {

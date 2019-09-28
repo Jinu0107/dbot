@@ -22,14 +22,6 @@ public class LunchListener extends ListenerAdapter {
 				// 파라미터가 들어왔다면 명령어와 파라메터를 구분한다.
 				param = cmd.substring(idx + 1);
 				cmd = cmd.substring(0, idx);
-			}else {
-				if(msg.equals("!yy 이석")) {
-					sayMsg("육수용 멸치 입니다.", event);
-				}else if(msg.equals("!yy 안진우")) {
-					sayMsg("존잘남 입니다." ,event);
-				}else if(msg.equals("!yy 박현진")) {
-					sayMsg("모지리 입니다",event);
-				}
 			}
 			switch (cmd) {
 			case "echo":
@@ -40,15 +32,34 @@ public class LunchListener extends ListenerAdapter {
 				}
 				break;
 			case "help":
-				sayMsg("현진이는 이거 할 수 있습니다. !yy echo ,", event);
+				sayMsg("현진이는 이거 할 수 있습니다. !yy echo , !yy 이석 , !yy 안진우 , !yy 박현진, !번역 (번역할 내용)", event);
+				break;
+			case "이석":
+				sayMsg("육수용 멸치입니다", event);
+				break;
+			case "안진우":
+				sayMsg("존잘남 입니다", event);
+				break;
+			case "박현진":
+				sayMsg("호구 병신 입니다", event);
 				break;
 			}
+
+		} else if (msg.startsWith("!번역")) {
+			Papago pa = new Papago();
+			int idx2 = msg.indexOf(" ");
+			if (idx2 < 0) {
+				sayMsg("번역할 내용을 입력하세요", event);
+				return;
+			}
+			String cmd = msg.substring(idx2 + 1);
+			sayMsg(pa.sensing(cmd), event);
 
 		}
 	}
 
-	private void sayMsg(String msg, MessageReceivedEvent e) {
-		e.getChannel().sendMessage(msg).queue();
+	private void sayMsg(String msg, MessageReceivedEvent event) {
+		event.getChannel().sendMessage(msg).queue();
 	}
 
 }
